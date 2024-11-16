@@ -1,7 +1,3 @@
-### README Content for LocalLink
-
----
-
 # LocalLink
 
 LocalLink is a simple chat application designed to connect users on the same WiFi network, enabling seamless communication without requiring internet access.
@@ -52,7 +48,3 @@ LocalLink is a simple chat application designed to connect users on the same WiF
 
 ## Contribution
 Feel free to fork this repository and submit pull requests for enhancements or bug fixes.
-
----
-
-Let me know if you want any adjustments!
