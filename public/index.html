@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wi-Fi Chat</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f5f5f5; }
+    #messages { list-style-type: none; padding: 0; margin-bottom: 10px; }
+    #messages li { padding: 8px; background-color: #e9e9e9; margin-bottom: 5px; }
+    #messageInput { width: 80%; padding: 10px; margin-right: 10px; }
+    #sendButton { padding: 10px 20px; cursor: pointer; }
+    .chat-container { max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+    #usernameContainer { text-align: center; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div id="usernameContainer">
+      <input id="usernameInput" type="text" placeholder="Enter your username" />
+      <button id="setUsernameButton">Set Username</button>
+    </div>
+    
+    <ul id="messages"></ul>
+    <input id="messageInput" type="text" placeholder="Type your message" />
+    <button id="sendButton">Send</button>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    const messages = document.getElementById('messages');
+    const input = document.getElementById('messageInput');
+    const sendButton = document.getElementById('sendButton');
+    const usernameInput = document.getElementById('usernameInput');
+    const setUsernameButton = document.getElementById('setUsernameButton');
+
+    let username = '';
+
+    // Listen for incoming messages
+    socket.on('chat message', (data) => {
+      const li = document.createElement('li');
+      li.textContent = `${data.username}: ${data.message}`;
+      messages.appendChild(li);
+    });
+
+    // Set username when button is clicked
+    setUsernameButton.addEventListener('click', () => {
+      const enteredUsername = usernameInput.value.trim();
+      if (enteredUsername) {
+        username = enteredUsername;
+        usernameInput.disabled = true;
+        setUsernameButton.disabled = true;
+        alert('Username set!');
+      }
+    });
+
+    // Send message when the button is clicked
+    sendButton.addEventListener('click', () => {
+      const msg = input.value;
+      if (msg.trim() !== "") {
+        socket.emit('chat message', { username, message: msg });  // Emit message with username
+        input.value = '';  // Clear input field
+      }
+    });
+
+    // Allow sending message by pressing 'Enter'
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        sendButton.click();
+      }
+    });
+  </script>
+</body>
+</html>
