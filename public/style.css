@@ -118,6 +118,7 @@ background-size: 206px 220px;  /* Size of each grid square */
     max-width: 100%;              /* Prevents overflow */
 }
 
+
 /* For active user container inside chat block */
 #activeUserContainer {
     position: absolute;           /* Absolutely position it within the chat block */
