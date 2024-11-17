@@ -44,34 +44,34 @@
 
     // Listen for incoming messages
     socket.on('chat message', (data) => {
-  const li = document.createElement('li');
-  const messageBlock = document.createElement('div');
-  messageBlock.classList.add('message__block');
-  
-  const messageContent = document.createElement('div');
-  messageContent.classList.add('chat__message');
-  messageContent.textContent = data.message;
+      console.log('Received message:', data); // Log to check if message is received
+      const li = document.createElement('li');
+      const messageBlock = document.createElement('div');
+      messageBlock.classList.add('message__block');
+      
+      const messageContent = document.createElement('div');
+      messageContent.classList.add('chat__message');
+      messageContent.textContent = data.message;
 
-  // Format timestamp
-  const timestamp = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-  const timestampDiv = document.createElement('div');
-  timestampDiv.classList.add('chat__timestamp');
-  timestampDiv.textContent = timestamp;
-messageBlock.appendChild(messageContent);
-messageBlock.appendChild(timestampDiv);
-  if (data.username === username) {
-    messageBlock.classList.add('chat__block--sender');
-    messageContent.classList.add('chat__message--sender');
-  } else {
-    messageBlock.classList.add('chat__block--receiver');
-    messageContent.classList.add('chat__message--receiver');
-  }
+      const timestamp = document.createElement('div');
+      timestamp.classList.add('chat__timestamp');
+      timestamp.textContent = new Date().toLocaleTimeString();
 
-  li.appendChild(messageBlock);
-  messages.appendChild(li);
-});
+      messageBlock.appendChild(messageContent);
+      messageBlock.appendChild(timestamp);
+      
+      const liMessage = document.createElement('li');
+      
+      if (data.username === username) {
+        messageBlock.classList.add('chat__block--sender');
+        messageContent.classList.add('chat__message--sender');
+      } else {
+        messageBlock.classList.add('chat__block');
+      }
 
-
+      liMessage.appendChild(messageBlock);
+      messages.appendChild(liMessage);
+    });
 
     // Set username when button is clicked
     setUsernameButton.addEventListener('click', () => {

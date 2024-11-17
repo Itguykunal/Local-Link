@@ -1,33 +1,35 @@
-// Importing required modules
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
-const os = require('os');  // To get the local IP address
+const os = require('os'); // To get the local IP address
 
-// Initialize express app
 const app = express();
-
-// Create HTTP server using express app
 const server = http.createServer(app);
-
-// Initialize socket.io
 const io = new Server(server);
 
 // Serve static files (for frontend)
 app.use(express.static('public'));
 
+let activeUsers = 0;
+
 // Handle socket connections
 io.on('connection', (socket) => {
-  console.log('A user connected:', socket.id);
+  activeUsers++;
+  io.emit('updateActiveUsers', activeUsers);  // Emit active users count to all clients
+  console.log('User connected');
+  console.log('Active users:', activeUsers);
 
-  // Listen for chat messages and broadcast them to all users
-  socket.on('chat message', (msg) => {
-    io.emit('chat message', msg);  // Broadcast message to everyone
+  // Listen for chat messages
+  socket.on('chat message', (data) => {
+    io.emit('chat message', data);  // Emit the received message to all clients
   });
 
-  // When a user disconnects
+  // Handle user disconnect
   socket.on('disconnect', () => {
-    console.log('User disconnected:', socket.id);
+    activeUsers--;  // Decrement active users
+    io.emit('updateActiveUsers', activeUsers);  // Emit updated active users count
+    console.log('User disconnected');
+    console.log('Active users:', activeUsers);
   });
 });
 
@@ -45,9 +47,9 @@ for (let interfaceName in networkInterfaces) {
 }
 
 // Start the server on port 3000
-server.listen(3000, () => {
+server.listen(3001, () => {
   if (localIP) {
-    console.log(`Server running on http://${localIP}:3000`);
+    console.log(`Server running on http://${localIP}:3001`);
   } else {
     console.log("Server could not detect the local IP address.");
   }

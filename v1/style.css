@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #040404;
+    background-image: 
+    linear-gradient(to right, #555 1px, transparent 1px), 
+    linear-gradient(to bottom, #555 1px, transparent 1px);
+background-size: 206px 220px;  /* Size of each grid square */
+  }
+  
+  #messages {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .chat {
+    flex-grow: 10;
+  }
+  
+  .chat__body {
+    height: calc(100vh - 7.3rem);
+    padding: 1rem;
+  }
+  
+  .chat__main {
+    padding: 0 1rem 1.75rem;
+  }
+  
+  .chat__block--sender {
+    justify-content: flex-end; /* Right side (sender) */
+  }
+  
+  .message__block {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat__message {
+    position: relative;
+    width: fit-content;
+    background-color: #222121; /* Default color for receiver */
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    margin: 0;
+  }
+  
+  .chat__message--sender {
+    background-color: #fff; /* Color for sender's message */
+    color: #040404;
+  }
+  
+  .chat__timestamp {
+    font-size: x-small;
+    margin-top: 0.3rem;
+    color: gray;
+  }
+  
+  .chat__block--sender .chat__message {
+    background-color: #fff; /* Ensures sender's message has a unique color */
+    color: #040404; /* Ensure text color is appropriate */
+  }
+  
+  .chat__block--sender .chat__timestamp {
+    display: inline-block;
+    text-align: right;
+    margin-left: 0;
+    margin-right: 0;
+    width: auto;
+  }
+  
+  .chat__block .chat__timestamp {
+    display: inline-block;
+    text-align: left;
+  }
+
+  #messageInput {
+    width: 50%;                  /* Keeps the input box responsive */
+    padding: 1rem 1.5rem;        /* Adjusted padding for better spacing */
+    border-radius: 25px;         /* Rounded corners */
+    border: 2px solid #ccc;      /* Subtle border */
+    background-color: rgb(255, 253, 253);
+    color: rgb(0, 0, 0);         /* Black text */
+    font-size: 1.5rem;           /* Use rem for font size */
+    outline: none;               /* Removes outline on focus */
+    transition: border-color 0.3s;/* Smooth transition on focus */
+    max-width: 100%;             /* Prevents exceeding container width */
+}
+
+#sendButton {
+    background-color: #ffc600;   /* Yellow background */
+    color: #040404;              /* Text color */
+    padding: 1rem 1.5rem;        /* Using rem for padding */
+    border: none;                /* Removes border */
+    border-radius: 25px;         /* Rounded corners */
+    font-size: 1.5rem;           /* Increased font size */
+    cursor: pointer;            /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition */
+    width: auto;                 /* Removes fixed width, lets it scale */
+    min-width: 120px;            /* Ensures consistency */
+    max-width: 100%;             /* Prevents exceeding container width */
+}
+
+#sendButton:hover {
+    background-color: #fad26e;   /* Darker yellow on hover */
+}
+
+/* To center the input and button */
+.chat__block {
+    display: flex;
+    justify-content: center;     /* Center input and button horizontally */
+    align-items: center;         /* Center input and button vertically */
+    gap: 1rem;                   /* Adds spacing between input and button */
+    margin-top: -5vh;             /* Use viewport height for responsive margin */
+    flex-wrap: wrap;              /* Stacks elements on small screens */
+    width: 100%;                  /* Full width for responsiveness */
+    max-width: 100%;              /* Prevents overflow */
+}
+
+/* For active user container inside chat block */
+#activeUserContainer {
+    position: absolute;           /* Absolutely position it within the chat block */
+    top: 3px;                       /* Align to the top */
+    right: 3px;                  /* Push to the right edge */
+    text-align: center;           /* Center the text */
+    font-size: 0.9rem;   
+    font-weight: bold;          /* Adjust font size */
+    padding: 10px;                /* Padding for spacing */
+    border-radius: 25px;          /* Rounded corners */
+    color: #ccc;                 /* White text */
+}
+
+
+
+
+
+
+
+
+
+
+  
