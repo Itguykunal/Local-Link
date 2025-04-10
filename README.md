@@ -13,18 +13,6 @@
 
 ---
 
-## 🎥 Demo
-
-### 💬 Real-time Chat in Action
-
-![Chat Demo](https://yourdomain.com/path-to-chat-demo.gif)
-
-### 🔗 Local Network Connection
-
-![Network Demo](https://yourdomain.com/path-to-network-demo.gif)
-
----
-
 ## ⚙️ Technologies Used
 
 - **Frontend**: React.js  
