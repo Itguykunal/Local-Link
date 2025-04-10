@@ -2,14 +2,16 @@
 
 **LocalLink** is a lightweight real-time chat application that enables communication between users connected to the **same WiFi network**, without requiring internet access.
 
+> 🛠️ *This project is under active development — features like file sharing (without using data) and media support are coming soon!*
+
 ---
 
 ## ✨ Features
 
 - 🔄 Real-time messaging via WebSocket  
-- 📶 Works seamlessly on local WiFi without internet  
-- 💻 Clean and minimal user interface  
-- 🔒 Private and secure local-only communication  
+- 📶 Works **without internet** – just connect to the same local WiFi  
+- 💻 Simple and clean interface  
+- 🔒 Secure communication within your own network  
 
 ---
 
@@ -17,8 +19,8 @@
 
 - **Frontend**: React.js  
 - **Backend**: Node.js (WebSocket server)  
-- **Database**: None (messages are ephemeral)  
-- **Protocol**: WebSocket for real-time communication  
+- **Database**: None (messages are not stored)  
+- **Protocol**: WebSocket for real-time, low-latency messaging  
 
 ---
 
@@ -49,28 +51,28 @@
    npm start
    ```
 
-6. **Connect Devices to Same WiFi**  
-   Ensure all devices are connected to the same local network, then open the app in the browser on each device.
+6. **Connect Devices to the Same WiFi**  
+   Open the app in a browser on each device. No internet required!
 
 ---
 
 ## 🧑‍💻 How to Use
 
-1. Open the application in any browser.  
-2. Enter your username to join the chat room.  
-3. Chat with anyone else connected to the same network and app.
+1. Open the application in your browser.  
+2. Enter your username to join the local chat.  
+3. Start chatting with others on the same WiFi network.
 
 ---
 
-## 🌱 Future Enhancements
+## 🚧 Under Development
 
-- 💾 Persistent message storage  
-- 📁 File sharing support  
-- 🔐 Authentication & user profiles  
-- 📱 Mobile-friendly UI  
+- 📁 **File Sharing without Internet or Mobile Data**  
+- 🖼️ **Media File Support (images, audio, etc.)**  
+- 📱 **Mobile-Friendly UI**  
+- 🔐 **User Profiles and Authentication**
 
 ---
 
 ## 🤝 Contribution
 
-Contributions are welcome! Fork the repository, create a branch, and submit a pull request for any feature improvements or bug fixes.
+Have ideas or want to contribute? Fork the repository, create a feature branch, and submit a pull request.
